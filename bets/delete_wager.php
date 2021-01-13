@@ -1,3 +1,4 @@
+
 <?php #  -delete_wager.php
 
 //accessed from review_bets.php
@@ -25,19 +26,19 @@ require_once ('../../mysql_connect_bets.php');
 
 
 $query = "DELETE FROM wagers where bet_id=$id";
-$result = @mysql_query($query);
+$result = @mysqli_query($GLOBALS["___mysqli_ston"], $query);
 
-if (mysql_affected_rows() == 1) {		//START CONDITION 
+if (mysqli_affected_rows($GLOBALS["___mysqli_ston"]) == 1) {		//START CONDITION 
 	echo '<h1 id="mainhead">Delete a Single Wager Record</h1>
 	<p>The wager with bet ID number ' . $id . ' has been deleted.</p>
 	<p><br /><br /></p>';
 	} else  {
 	echo '<h1 id="mainhead">System Error</h1>
 	<p class="error">The wager could not be deleted due to a system error.</p>';
-	echo '<p>' . mysql_error() . '<br /><br />Query: ' . $query . '</p>';
+	echo '<p>' . mysqli_error($GLOBALS["___mysqli_ston"]) . '<br /><br />Query: ' . $query . '</p>';
 }
 									
-mysql_close();
+((is_null($___mysqli_res = mysqli_close($GLOBALS["___mysqli_ston"]))) ? false : $___mysqli_res);
 include ('../includes/footer.html');
 
 ?>	

@@ -59,13 +59,6 @@ $type = ($_POST['type']);
 
 
 
-if (empty($_POST['odds'])) { 
-   $errors[] = 'You forgot to enter the odds.';
-} else {  
-$odds = ($_POST['odds']);
-}
-
-
 if (empty($_POST['wager'])) { 
    $errors[] = 'You forgot to enter the wager.';
 } else { 
@@ -79,19 +72,22 @@ if (empty($_POST["horse"])) {
 $horse = ($_POST["horse"]);
 }
 
-if ($_POST["wager"] == 5 || $_POST["wager"] == 6 || $_POST["wager"] == 7) {
-	$errors[] = 'Please use Exotic Wagers form.';
+
+if (empty($_POST["horse2"])) {
+	$errors[] = 'You forgot to enter horse two.';
+	} else {
+	$horse2 = ($_POST["horse2"]);
 }
 
 
-if (empty($_POST['finish'])) { 
+if (empty($_POST['finish']) && $_POST['finish2']) { 
    $errors[] = 'You forgot to enter the finishing order.';
 } else {  
 $finish = ($_POST['finish']);
+$finish2 = ($_POST['finish2']);
 }
 
-echo "<p>Here are the values: $date, $race_no, $track, $distance, $surface, $type, $horse,
-$odds, $wager, $finish</p>";
+echo "<p>Here are the values: $date, $race_no, $track, $distance, $surface, $type, $horse, $horse2, $wager, $finish, $finish2</p>";
 
 if (empty($errors)) {
   require_once ('../../mysql_connect_bets.php');
@@ -109,12 +105,13 @@ function escape_data ($data) {
 $horse = escape_data($horse);
 
 
-
-  $query = "INSERT INTO wagers (date,race_no,track_id,distance,surface,type,horse,odds_id,play_id,finish) VALUES ('$date','$race_no','$track','$distance','$surface', '$type', '$horse',
-  '$odds','$wager','$finish')";
+if ($_POST["wager"] == 5 || $_POST["wager"] == 6 || $_POST["wager"] == 7) {
+	$horse2 = escape_data($horse2);
+  $query = "INSERT INTO wagers (date,race_no,track_id,distance,surface,type,horse,horse2,play_id,finish,finish2) VALUES ('$date','$race_no','$track','$distance','$surface', '$type', '$horse', '$horse2',
+'$wager','$finish','$finish2')";
 
 $result = mysqli_query($GLOBALS["___mysqli_ston"], $query);
-
+} 
 
 if ($result) {
   echo '<h1 id="mainhead">Thank you!</h1>
@@ -148,7 +145,7 @@ if ($result) {
 ?>
 
 <h2>Submit Wager Info</h2>
-<form action="submit_bets.php" method="post">
+<form action="submit_exotic_bet.php" method="post">
 
 <p>Date: 
 <?php
@@ -325,14 +322,6 @@ echo '</select>';
 
 
 <p>Wager: <select name="wager">
-<option value=8>$2 Win</option>
-<option value=10>$2 Place</option>
-<option value=1>$5 Win</option>
-<option value=9>$5 Place</option>
-<option value=2>$10 Win</option>
-<option value=11>$2 Win/Place</option>
-<option value=3>$5 Win/Place</option>
-<option value=4>$10 Win/Place</option>
 <option value=5>$2 Exacta</option>
 <option value=6>$2 Exacta Box</option>
 <option value=7>$2 Daily Double</option>
@@ -342,46 +331,33 @@ echo '</select>';
 
 
 
-echo '<p>Horse: <input type="text" name="horse" size="18" maxlength="20" />
+echo '<p>Horse 1: <input type="text" name="horse" size="18" maxlength="20" />
 </p>';
-
+echo '<p>Horse 2 : <input type="text" name="horse2" size="18" maxlength="20" />
+</p>';
 
 ?>
 
-<p>Odds: <select name="odds">
-<option value=1>2:1</option>
-<option value=2>5:2</option>
-<option value=3>3:1</option>
-<option value=4>7:2</option>
-<option value=5>4:1</option>
-<option value=6>9:2</option>
-<option value=7>5:1</option>
-<option value=8>6:1</option>
-<option value=9>7:1</option>
-<option value=10>8:1</option>
-<option value=11>9:1</option>
-<option value=12>10:1</option>
-<option value=13>12:1</option>
-<option value=14>15:1</option>
-<option value=15>18:1</option>
-<option value=16>20:1</option>
-<option value=17>25:1</option>
-<option value=18>30:1</option>
-<option value=19>40:1</option>
-<option value=20>50:1</option>
-<option value=21>60:1</option>
-<option value=22>Higher</option>
-
-</select></p>
 
 
 
-<p>Finish: 
+
+<p>Horse One Finish: 
 <?php
 
 echo "<select name=\"finish\">";
 	for ($finish = 1 ; $finish <= 30; $finish++) {
 	echo "<option value=\"$finish\">$finish<br></option>\n";
+	}
+	echo "</select>";
+?>;
+
+<p>Horse Two Finish:
+<?php
+
+echo "<select name=\"finish2\">";
+	for ($finish2 = 1 ; $finish2 <= 30; $finish2++) {
+	echo "<option value=\"$finish2\">$finish2<br></option>\n";
 	}
 	echo "</select>";
 ?>
