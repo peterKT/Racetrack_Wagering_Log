@@ -1,7 +1,7 @@
 
 <?php # Review Bets
 
-$page_title = 'Review Bets';
+$page_title = 'Review Exotic Bets';
 include ('../includes/header_bets.html');
 require_once ('../../mysql_connect_bets.php');
 
@@ -13,12 +13,12 @@ $link4 = "{$_SERVER['PHP_SELF']}?sort=finisha";
 if (isset($_GET['sort']) ) {
 	switch ($_GET['sort']) {
 		case 'datea':
-		$order_by = 'date2 ASC';
+		$order_by = 'date ASC';
 		$link1="{$_SERVER['PHP_SELF']}?sort=dated";
 		break;
 
 		case 'dated':
-		$order_by = 'date2 DESC';
+		$order_by = 'date DESC';
 		$link1="{$_SERVER['PHP_SELF']}?sort=datea";
 		break;
 
@@ -62,19 +62,17 @@ if (isset($_GET['sort']) ) {
 
 	$sort = $_GET['sort'];
 } else {
-	$order_by = 'date2 DESC';
+	$order_by = 'date DESC';
 	$sort = "dated";
 }
+// Dates will be badly sorted until we copy the technique used in review_bets, then use it above.
 
-// DATE_FORMAT shows the dates without leading zeros thanks to the format specifiers.
-// Unfortunately, DATE_FORMAT does not sort correctly. To get a correct sort, use STR_TO_DATE.
-// The leading zero format specifiers don't work with STR_TO_DATE for some reason.
-
-  $query1 = "SELECT bet_id,DATE_FORMAT(date,'%Y-%c-%e') as date1,STR_TO_DATE(date,'%Y-%m-%d') as date2,track,race_no,distance,surface,race_type,odds,play_type,horse,finish from wagers,tracks,race_types,odds,plays WHERE wagers.track_id=tracks.track_id AND wagers.type=race_types.race_type_id AND wagers.odds_id=odds.odds_id AND wagers.play_id=plays.play_id AND wagers.horse2='None' ORDER BY $order_by";
+  $query1 = "SELECT bet_id,date,track,race_no,distance,surface,race_type,odds,play_type,horse,horse2,finish,finish2 from wagers,tracks,race_types,odds,plays WHERE (wagers.play_id=5 OR wagers.play_id=6 OR wagers.play_id=7) AND wagers.track_id=tracks.track_id AND wagers.type=race_types.race_type_id AND wagers.odds_id=odds.odds_id AND wagers.play_id=plays.play_id ORDER BY $order_by";
 
 $result = @mysqli_query($GLOBALS["___mysqli_ston"], $query1);
 if ($result) {
   echo "<h1 align=\"center\">All Results</h1>";
+  echo "<h3 align=\"center\">Finish Order (Zero indicates unknown value)</h3>";
 //  echo "<h3 align=\"center\">Sort is $sort and Order By is $order_by</h3>";
   echo '<table align="center" cellspacing="0" cellpadding="5"><tr>
   <td align="left"><b>Delete</b></td>
@@ -86,7 +84,8 @@ if ($result) {
   <td align="left"><b>Type</b></td>
   <td align="left"><b>Odds</b></td>
   <td align="left"><b>Wager</b></td>
-  <td align="left"><b><a href="' . $link3 . '">Horse</b></td>
+  <td align="left"><b><a href="' . $link3 . '">Horse #1</b></td>
+  <td align="left"><b>Horse #2</b></td>
   <td align="left"><b><a href="' . $link4 . '">Finish</b></td>
 </tr>';
 
@@ -100,7 +99,7 @@ $bg = '#eeeeee';
   <td align="left"><a href="delete_wager.php?id=' . $row['bet_id'] . ' ">Delete</a></td>
 
 
-  <td align="left">' . $row['date1'] . '</td>
+  <td align="left">' . $row['date'] . '</td>
   <td align="left" nowrap="nowrap">' . $row['track'] . '</td>
   <td align="left">' . $row['race_no'] . '</td>
   <td align="left" nowrap="nowrap">' . $row['distance'] . '</td>
@@ -109,7 +108,9 @@ $bg = '#eeeeee';
   <td align="left">' . $row['odds'] . '</td>
   <td align="left" nowrap="nowrap">' . $row['play_type'] . '</td>
   <td align="left" nowrap="nowrap">' . $row['horse'] . '</td>
-  <td align="left">' . $row['finish'] . '</td>
+  <td align="left" nowrap="nowrap">' . $row['horse2'] . '</td>
+  <td align="left">' . $row['finish'] .'-' . $row['finish2'] . '</td>
+
 </tr>';
 
 }
