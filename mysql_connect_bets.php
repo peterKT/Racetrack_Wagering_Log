@@ -1,7 +1,7 @@
 <?php #Script 7.2 - mysql_connect.php
-
-DEFINE ('DB_USER', 'root');
-DEFINE ('DB_PASSWORD', 'admin');
+// insert user name and password for the new bets database
+DEFINE ('DB_USER', 'user_name');
+DEFINE ('DB_PASSWORD', 'password');
 DEFINE ('DB_HOST', 'localhost');
 DEFINE ('DB_NAME', 'bets');
 
