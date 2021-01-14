@@ -371,7 +371,7 @@ echo '<p>Horse: <input type="text" name="horse" size="18" maxlength="20" />
 <option value=20>50:1</option>
 <option value=21>60:1</option>
 <option value=22>Higher</option>
-
+<option value=23>None</option>
 </select></p>
 
 
