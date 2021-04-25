@@ -203,7 +203,10 @@ echo "<select name=\"year\">";
 </select></p>
 
 
-
+//You must edit this list to conform to the values entered in your 'tracks' table
+//so, for example, Aqueduct might actually be option value 4, not 1. The option
+//value is defined in the tracks table. Enter your tracks there and use the track_id value
+//here.
   
 <p>Track: <select name="track">
 <option value=1>Aqueduct</option>
