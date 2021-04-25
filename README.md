@@ -6,3 +6,4 @@ But this is still a do-it-yourself localhost Web site for horse racing enthusias
 See the Wiki for directions.
 
 Note: designed for simple wagers only: win, place, show, exactas, etc.
+Note: On April 24, 2021, I fiddled with the settings which seem to be needed to actually make the code available on GitHut. Hope it works.
