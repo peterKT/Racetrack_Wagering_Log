@@ -330,15 +330,22 @@ echo '<select name="type">';
 		}
 echo '</select>';
 ?>
+	
+//As with the tracks section, these sample text values need to match
+//what is in your plays table in MySQL. Enter wager types there.
+//Keep it simple, as in//this example. Again, as with the tracks section, the wager ID
+//will be auto-generated and is used in this text section to send a querry to the database
+//asking it to display the wager associated with the ID number in your Web browser.
+//The wager type is limited to 18 characters.
+	
+//Note: last three wagers are commented out here beause they are only
+//used in the exotic bets submission form.
+	
+	
+	
 </p>
 
-//As with the tracks section, these sample text values need to match
-//what is in your odds table in MySQL. Enter your wagers there using X:Y notation, i.e.
-//5:2, 10:1, etc. You won't want to enter every conceivable odds! Keep it simple, as in
-//this example. The last value entered into the odds table should be 'Unknown'. Odds
-//are not displayed for exotic wagers. Again, as for the tracks section, the wager ID
-//will be auto-generated and is used in this text section to send a querry to the database
-//asking it to display the odds associated with the ID number in your Web browser.
+
 
 <p>Wager: <select name="wager">
 <option value=8>$2 Win</option>
@@ -349,9 +356,9 @@ echo '</select>';
 <option value=11>$2 Win/Place</option>
 <option value=3>$5 Win/Place</option>
 <option value=4>$10 Win/Place</option>
-<option value=5>$2 Exacta</option>
-<option value=6>$2 Exacta Box</option>
-<option value=7>$2 Daily Double</option>
+//<option value=5>$2 Exacta</option>
+//<option value=6>$2 Exacta Box</option>
+//<option value=7>$2 Daily Double</option>
 </select></p>
 
 <?php
@@ -363,6 +370,17 @@ echo '<p>Horse: <input type="text" name="horse" size="18" maxlength="20" />
 
 
 ?>
+
+//As with the tracks section, these sample text values need to match
+//what is in your odds table in MySQL. Enter odds there using X:Y notation, i.e.
+//5:2, 10:1, etc. You won't want to enter every conceivable odds! Keep it simple, as in
+//this example. The last value entered into the odds table should be 'Unknown'. Odds
+//are not displayed for exotic wagers. Again, as for the tracks section, the odds ID
+//will be auto-generated and is used in this text section to send a querry to the database
+//asking it to display the odds associated with the ID number in your Web browser.
+
+
+
 
 <p>Odds: <select name="odds">
 <option value=1>2:1</option>
