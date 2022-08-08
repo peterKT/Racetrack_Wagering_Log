@@ -206,7 +206,13 @@ echo "<select name=\"year\">";
 //You must edit this list to conform to the values entered in your 'tracks' table
 //so, for example, Aqueduct might actually be option value 4, not 1. The option
 //value is defined in the tracks table. Enter your tracks there and use the track_id value
-//here.
+//here. For example, you insert values into 'tracks' using the MySQL insert command
+//like this: INSERT INTO tracks(track) values ('Aqueduct', 'Belmont');
+//The table will now be populated with these strings along with an auto-generated
+//ID number, easily displayed by typing SELECT * FROM tracks;
+//Create the text list below using these valules, not the ones you see here from
+//the example. The ID number goes immediately after value= and the track
+//name goes in between the pointy brackets ><.
   
 <p>Track: <select name="track">
 <option value=1>Aqueduct</option>
@@ -326,6 +332,13 @@ echo '</select>';
 ?>
 </p>
 
+//As with the tracks tracks section, these sample text values need to match
+//what is in your odds table in MySQL. Enter your wagers there using X:Y notation, i.e.
+//5:2, 10:1, etc. You won't want to enter every conceivable odds! Keep it simple, as in
+//this example. The last value entered into the odds table should be 'Unknown'. Odds
+//are not displayed for exotic wagers. Again, as for the tracks section, the wager ID
+//will be auto-generated and is used in this text section to send a querry to the database
+//asking it to display the odds associated with the ID number in your Web browser.
 
 <p>Wager: <select name="wager">
 <option value=8>$2 Win</option>
