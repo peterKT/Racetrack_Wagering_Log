@@ -332,7 +332,7 @@ echo '</select>';
 ?>
 </p>
 
-//As with the tracks tracks section, these sample text values need to match
+//As with the tracks section, these sample text values need to match
 //what is in your odds table in MySQL. Enter your wagers there using X:Y notation, i.e.
 //5:2, 10:1, etc. You won't want to enter every conceivable odds! Keep it simple, as in
 //this example. The last value entered into the odds table should be 'Unknown'. Odds
