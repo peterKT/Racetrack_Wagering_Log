@@ -1,5 +1,11 @@
 
-<?php # Script 73. - register.php
+//Note: See the comments in the submit_bets.php file to see how to
+//enter text in the tracks list section and the wager types section.
+//Those are the only parts of this file that need to be manually modified
+//from what appears in this example file.
+
+
+<?php # submit_exotic_bet.php
 
 $page_title = 'Submit Bets';
 include ('../includes/header_bets.html');
