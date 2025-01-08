@@ -1,11 +1,5 @@
 
-//Note: See the comments in the submit_bets.php file to see how to
-//enter text in the tracks list section and the wager types section.
-//Those are the only parts of this file that need to be manually modified
-//from what appears in this example file.
-
-
-<?php # submit_exotic_bet.php
+<?php # Script 73. - register.php
 
 $page_title = 'Submit Bets';
 include ('../includes/header_bets.html');
@@ -180,7 +174,7 @@ echo "<select name=\"day\">";
 //PICK YEAR
 
 echo "<select name=\"year\">";
-	for ($year=2020 ; $year <= 2021 ; $year++) {
+	for ($year=2024 ; $year <= 2026 ; $year++) {
 	
 	echo "<option value=\"$year\">$year<br></option>\n";
 	}
@@ -209,26 +203,39 @@ echo "<select name=\"year\">";
 
   
 <p>Track: <select name="track">
+<option value=85>Aintree</option>
 <option value=1>Aqueduct</option>
 <option value=13>Arlington</option>
 <option value=21>Ascot</option>
 <option value=54>Ayr</option>
+<option value=80>Bath</option>
 <option value=28>Bellewstown</option>
 <option value=2>Belmont</option>
+<option value=75>Brighton</option>
 <option value=47>Beverley</option>
+<option value=71>Carlisle</option>
+<option value=68>Catterick</option>
 <option value=62>Chelmsford</option>
+<option value=77>Cheltenham</option>
+<option value=72>Chepstow</option>
 <option value=53>Chester</option>
 <option value=3>Churchill Downs</option>
+<option value=82>Clonmel</option>
 <option value=42>Cork</option>
 <option value=22>Curragh</option>
 <option value=4>Del Mar</option>
 <option value=15>Delaware Park</option>
 <option value=39>Deauville</option>
 <option value=52>Doncaster</option>
+<option value=67>Down Royal</option>
 <option value=59>Dundalk</option>
+<option value=92>Ellis Park</option>
 <option value=30>Epsom</option>
 <option value=5>Fair Grounds</option>
 <option value=57>Fairyhouse</option>
+<option value=76>Flemington</option>
+<option value=83>Fontainebleau</option>
+<option value=81>Ffos Las</option>
 <option value=37>Galway</option>
 <option value=19>Goodwood</option>
 <option value=55>Gowran</option>
@@ -238,36 +245,47 @@ echo "<select name=\"year\">";
 <option value=7>Keenland</option>
 <option value=44>Kempton</option>
 <option value=17>Kentucky Downs</option>
+<option value=79>Killarney</option>
 <option value=51>Laurel</option>
-<option value=50>Leichester</option>
+<option value=50>Leicester</option>
 <option value=40>Leopardstown</option>
 <option value=32>Limerick</option>
 <option value=49>Lingfield</option>
 <option value=58>Listowel</option>
 <option value=60>Longchamp</option>
+<option value=64>Meydan</option>
 <option value=8>Monmouth</option>
 <option value=46>Musselburgh</option>
 <option value=24>Naas</option>
 <option value=29>Navan</option>
 <option value=23>Newbury</option>
+<option value=78>Newcastle</option>
 <option value=20>Newmarket</option>
 <option value=61>Nottingham</option>
 <option value=9>Oaklawn</option>
-<option value=19>Penn National</option>
+<option value=73>Parx</option>
 <option value=10>Pimlico</option>
 <option value=35>Pontefract</option>
 <option value=26>Redcar</option>
 <option value=36>Ripon</option>
+<option value=63>Riyadh</option>
 <option value=45>Roscommon</option>
 <option value=43>Salisbury</option>
 <option value=41>Sandown</option>
 <option value=11>Santa Anita</option>
 <option value=16>Saratoga</option>
+<option value=69>Sligo</option>
+<option value=87>Southwell</option>
 <option value=12>Tampa Bay</option>
 <option value=38>Thirsk</option>
 <option value=27>Thistledown</option>
+<option value=74>Thurles</option>
+<option value=66>Tipperary</option>
+<option value=70>Tramore</option>
 <option value=14>Turfway Park</option>
+<option value=65>Wetherby</option>
 <option value=31>Windsor</option>
+<option value=84>Wolverhampton</option>
 <option value=18>Woodbine</option>
 <option value=34>Yarmouth</option>
 <option value=33>York</option>
