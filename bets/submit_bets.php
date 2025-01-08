@@ -174,10 +174,10 @@ echo "<select name=\"day\">";
 	}
 	echo "</select>";
 
-//PICK YEAR
+//PICK YEAR 
 
 echo "<select name=\"year\">";
-	for ($year=2020 ; $year <= 2021 ; $year++) {
+	for ($year=2024 ; $year <= 2026 ; $year++) {
 	
 	echo "<option value=\"$year\">$year<br></option>\n";
 	}
